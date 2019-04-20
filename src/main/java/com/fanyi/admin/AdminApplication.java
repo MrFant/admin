@@ -7,10 +7,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 
-public class XgwebApplication{
+public class AdminApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(XgwebApplication.class, args);
+        SpringApplication.run(AdminApplication.class, args);
     }
 
 }

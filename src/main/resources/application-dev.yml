@@ -1,0 +1,9 @@
+# embedded tomcat server port
+server:
+  port: 8080
+
+spring:
+  thymeleaf:
+    cache: false
+
+# 开发环境使用嵌入式h2数据库，无需配置数据源
