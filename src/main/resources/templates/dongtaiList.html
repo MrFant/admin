@@ -1,0 +1,45 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragment/header::head}">
+</head>
+<body>
+<header th:replace="~{fragment/header::header}"></header>
+<div id="main">
+
+    <div class="mycontainer">
+        <div class="container card home-container">
+            <div class="card-header bg-light w-100 m-0" >
+
+                    <span class="ml-4" th:text="${title}"></span>
+            </div>
+            <div  class="row pl-5 pr-5">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th data-field="title">标题</th>
+                        <th data-field="hit">阅读次数</th>
+                        <th data-field="publishTime">发布时间</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <tr th:each="dongtai:${dongtaiModel.dongtaiList}">
+
+                        <td >
+                            <a target="_blank" th:href="@{'/dongtai/view/'+${dongtai.id}}" th:text="${dongtai.title}"></a>
+                        </td>
+                        <td th:text="${dongtai.hit}"></td>
+                        <td th:text="${dongtai.publishTime}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+        <div th:replace="~{fragment/footer :: footer}">...</div>
+    </div>
+</div>
+
+</body>
+</html>

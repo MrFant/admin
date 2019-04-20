@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:replace="~{admin/common::head}">
+
+</head>
+<body>
+<header th:replace="~{admin/common::header}"></header>
+<div class="container-fluid p-0 m-0 h-100">
+    <div class="row h-100">
+        <div class="col-xl-2 col-lg-3 h-100">
+            <div class="card h-100 ">
+                <nav>
+                    <ul class="mcd-menu">
+
+                        <li>
+                            <a href="#" data-url="/" class="active">
+                                <i class="fa fa-home"></i>
+                                <strong>首页</strong>
+
+                            </a>
+                        </li>
+                        <!--// 当账号为admin时才能进行用户管理-->
+                        <li sec:authorize="hasRole('ROLE_ADMIN')">
+                            <a href="#" data-url="/user/list">
+                                <i class="fa fa-address-card"></i>
+                                <strong>用户管理</strong>
+
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" data-url="/">
+                                <i class="fa fa-bar-chart"></i>
+                                <strong>学院概况</strong>
+
+                            </a>
+
+                            <ul class="card">
+                                <li>
+                                    <a href="#" data-url="/">
+                                        <i class="fa fa-pie-chart"></i>学院简介
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" data-url="/">
+                                        <i class="fa fa-user-o"></i>师资队伍
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" data-url="/">
+                                        <i class="fa fa-gears"></i>专业设置
+                                    </a>
+                                </li>
+                            </ul>
+
+
+                        </li>
+                        <li>
+                            <a href="#" data-url="/">
+                                <i class="fa fa-user-plus"></i>
+                                <strong>党建工作</strong>
+
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" data-url="/">
+                                <i class="fa fa-graduation-cap"></i>
+                                <strong>教研工作</strong>
+
+                            </a>
+                            <ul class="card">
+                                <li>
+                                    <a href="#" data-url="/jiaoyan/list/jiaoxue">
+                                        <i class="fa fa-thumbs-o-up"></i>教学活动
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" data-url="/jiaoyan/list/keyan">
+                                        <i class="fa fa-trophy"></i>科研情况
+                                    </a>
+                                </li>
+
+                            </ul>
+
+                        </li>
+                        <li>
+                            <a href="#" data-url="/">
+                                <i class="fa fa-flag"></i>
+                                <strong>团学工作</strong>
+
+                            </a>
+                            <ul class="card">
+                                <li>
+                                    <a href="#" data-url="/">
+                                        <i class="fa fa-vcard-o"></i>团学活动
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" data-url="/">
+                                        <i class="fa fa-universal-access"></i>优秀学子
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" data-url="/">
+                                <i class="fa fa-newspaper-o"></i>
+                                <strong>就业情况</strong>
+
+                            </a>
+                            <ul class="card">
+                                <li>
+                                    <a href="#" data-url="/">
+                                        <i class="fa fa-university"></i>校内实训
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" data-url="/">
+                                        <i class="fa fa-desktop"></i>顶岗实习
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" data-url="/">
+                                        <i class="fa fa-object-group"></i>就业信息
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" data-url="/">
+                                <i class="fa fa-handshake-o"></i>
+                                <strong>校企合作</strong>
+
+                            </a>
+                            <ul class="card">
+                                <li>
+                                    <a href="#" data-url="/">
+                                        <i class="fa fa-sitemap"></i>企业情况
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" data-url="/">
+                                        <i class="fa fa-tasks"></i>合作动态
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" data-url='/'>
+                                <i class="fa fa-download"></i>
+                                <strong>资料下载</strong>
+
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" data-url='/'>
+                                <i class="fa fa-image"></i>
+                                <strong>图片轮播</strong>
+
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" data-url='/'>
+                                <i class="fa fa-bullhorn"></i>
+                                <strong>通知通告</strong>
+
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" data-url="/dongtai/list">
+                                <i class="fa fa-calendar-check-o"></i>
+                                <strong>学院动态</strong>
+
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" data-url='/biyesheng/list'>
+                                <i class="fa fa-id-badge"></i>
+                                <strong>优秀毕业生</strong>
+
+                            </a>
+                        </li>
+
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="col-xl-10 col-lg-9 mt-4 justify-content-center" id="mymain">
+            <div class="card mr-4 mb-5" id="rightContainer">
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<footer th:replace="~{admin/common::footer}"></footer>
+
+</body>
+</html>

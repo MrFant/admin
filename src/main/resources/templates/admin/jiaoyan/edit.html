@@ -1,0 +1,23 @@
+
+<div class="container">
+
+    <form th:action="@{/jiaoyan}" method="post" th:object="${jiaoyanModel.jiaoyan}" id="jiaoyanForm">
+        <input type="hidden" name="id" th:value="*{id}">
+
+        <div class="form-group ">
+
+            <label for="title" class="col-form-label">标题</label>
+            <input type="text" class="form-control" id="title" name="title" th:value="*{title}" maxlength="100"
+                   placeholder="请输入标题，至多100个字符">
+
+        </div>
+        <div class="form-group">
+            <label for="kindEditorContent" class="col-form-label">内容</label>
+            <textarea class="form-control" id="kindEditorContent"  th:utext="*{content}"  name="content" style="width:100%;height:300px;" ></textarea>
+        </div>
+
+    </form>
+
+    <script charset="utf-8" src="/static/kindEditor/kindEditorConfig.js"></script>
+
+</div>

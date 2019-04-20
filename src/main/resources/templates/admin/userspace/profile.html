@@ -1,0 +1,84 @@
+<div class="card-header bg-light">
+
+    <div class="input-group col-md-7 col-xl-6 align-items-center">
+        <strong data-th-text="${title}">当前位置：</strong>
+
+    </div>
+</div>
+<div id="mainContainer" class="container">
+    <div id="mainContainerRepleace" class="row pl-5 pt-2">
+
+        <div class="card-block">
+            <form  th:action="'/u/'+${userModel.user.username}+'/profile'" th:attr="url=${'/u/'+userModel.user.username+'/profile'}" method="post" th:object="${userModel.user}"
+                  id="userForm">
+                <input type="hidden" name="id" id="userId" th:value="*{id}">
+
+
+                <div class="form-group ">
+                    <label for="username" class="col-form-label">账号</label>
+                    <input type="text" class="form-control" id="username" name="username" th:value="*{username}">
+
+                </div>
+                <div class="form-group">
+                    <label for="email" class="col-form-label">邮箱</label>
+                    <input type="email" class="form-control" id="email" name="email" th:value="*{email}" maxlength="50"
+                           placeholder="请输入邮箱">
+                </div>
+                <div class="form-group">
+                    <label for="phone" class="col-form-label">邮箱</label>
+                    <input type="text" class="form-control" id="phone" name="phone" th:value="*{phone}" maxlength="20"
+                           placeholder="请输入电话">
+                </div>
+                <div class="form-group">
+                    <label for="name" class="col-form-label">姓名</label>
+                    <input type="text" class="form-control" id="name" name="name" th:value="*{name}" maxlength="20"
+                           placeholder="请输入姓名，至少2个字符，至多20个">
+                </div>
+                <div class="form-group">
+                    <label for="password" class="col-form-label">密码</label>
+                    <input type="password" class="form-control" id="password" name="password" th:value="*{password}"
+                           maxlength="30" placeholder="请输入密码，至少3个字符，至多30个">
+                </div>
+                <div class="form-group">
+                    <button type="button" id="submitProfile" class="btn btn-primary">保存</button>
+                </div>
+            </form>
+            <script>
+                $(function() {
+
+                    $("#submitProfile").click(function () {
+                        var csrfToken = $("meta[name='_csrf']").attr("content");
+                        var csrfHeader = $("meta[name='_csrf_header']").attr("content");
+
+                        var url = $('#userForm').attr("url");
+
+                        $.ajax({
+                            url: url,
+                            type: 'POST',
+                            data: $('#userForm').serialize(),
+                            beforeSend: function(request) {
+                                request.setRequestHeader(csrfHeader, csrfToken); // 添加  CSRF Token
+                            },
+                            success: function (data) {
+
+                                if (!data.success) {
+                                    toastr.error(data.message);
+                                } else {
+
+                                    toastr.info(data.message);
+                                    $("#rightContainer").html('');
+                                }
+
+                            },
+                            error: function () {
+                                toastr.error("error!");
+                            }
+                        });
+                    });
+                });
+            </script>
+        </div>
+    </div>
+</div>
+<!-- /.container -->
+ 

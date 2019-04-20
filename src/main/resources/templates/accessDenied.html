@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>AccessDenied page</title>
+
+</head>
+<body>
+<p>
+    Dear
+    <!--/*@thymesVar id="user" type="java.lang.String"*/-->
+    <strong th:text="${user}">user</strong>, You are not authorized to perform this action.
+</p>
+<a th:href="@{/logout}">Logout</a>
+
+</body>
+</html>

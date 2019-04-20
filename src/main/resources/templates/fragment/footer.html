@@ -1,0 +1,98 @@
+
+<div data-th-fragment="footer" class="w-100">
+
+        <div class="myfooter w-100">
+            <span class="l-footer">©2018 版权所有 双泽软件工作室</span>
+
+        </div>
+<script src="/static/js/jquery-3.3.1.min.js"></script>
+<script src="/static/js/popper.js"></script>
+<script src="/static/js/bootstrap-material-design.js"></script>
+    <script src="/static/js/thymeleaf-bootstrap-paginator.js" ></script>
+
+
+    <script>
+
+    $(document).ready(function() {
+        var $elm = $('#mynav');
+        var startPos = $elm.offset().top;
+
+        $("div").scroll(function () {
+            var p = $(this).scrollTop();
+            if (p > 0) {
+                $elm.css({
+                    'box-shadow': '0px 1px 4px rgba(0,0,0,0.4)'
+                });
+            } else {
+                $elm.css({
+                    'box-shadow': 'none'
+                });
+            }
+        });
+    });
+    $(function(){
+        var $modal_attr1=$('#registerModal').attr('aria-hidden');
+        var $modal_attr2=$('#loginModal').attr('aria-hidden');
+        if($modal_attr1==='false'){
+            $('#registerModal').modal('show');
+            $('#registerModal').attr('aria-hidden','true');
+        }
+        if($modal_attr2==='false'){
+            $('#loginModal').modal('show');
+            $('#loginModal').attr('aria-hidden','true');
+        }
+    });
+    $(function(){
+        $('nav ul li').hover(
+            function () {
+                //show its submenu
+
+                $('ul', this).slideDown(150);
+
+            },
+            function () {
+                //hide its submenu
+                $('ul', this).slideUp(150);
+            }
+        );
+    });
+    $(function () {
+        $('.title-cell a').mouseenter(function () {
+            $(this).children('i').css({
+                'animation': 'bounceInLeft  0.5s linear'
+            });
+        }).mouseleave(function () {
+            $(this).children('i').css({
+                'animation': 'none'
+            });
+        });
+    });
+    $(function () {
+        $('#class1').mouseenter(function () {
+
+            $('#h2-1').css({
+                'animation': 'bounceInDown 0.5s 0.5s linear'
+            });
+        }).mouseleave(function () {
+
+            $('#h2-1').css({
+                'animation': 'none'
+            });
+        });
+        $('#class2').mouseenter(function () {
+
+            $('#h2-2').css({
+                'animation': 'bounceInDown 0.5s 0.5s linear'
+            });
+        }).mouseleave(function () {
+
+            $('#h2-2').css({
+                'animation': 'none'
+            });
+        });
+    });
+
+</script>
+
+
+</div>
