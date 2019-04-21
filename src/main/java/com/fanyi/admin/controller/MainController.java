@@ -2,8 +2,6 @@ package com.fanyi.admin.controller;
 
 import com.fanyi.admin.domain.*;
 import com.fanyi.admin.service.*;
-import com.haibusiness.xgweb.domain.*;
-import com.haibusiness.xgweb.service.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

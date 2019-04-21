@@ -16,7 +16,7 @@ import java.util.Date;
 
 /**
  *
- * @author Jinyu
+ * @author
  */
 @Entity
 @Data

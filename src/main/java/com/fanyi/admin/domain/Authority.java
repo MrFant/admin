@@ -16,7 +16,7 @@ import java.util.Collection;
 
 /**
  *
- * @author Jinyu
+ * @author
  */
 @Entity
 @Data

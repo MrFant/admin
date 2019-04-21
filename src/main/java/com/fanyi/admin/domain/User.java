@@ -5,10 +5,7 @@
  */
 package com.fanyi.admin.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.Data;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.GrantedAuthority;
@@ -25,36 +22,35 @@ import java.util.List;
 
 /**
  *
- * @author Jinyu
  */
 @Entity
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-
+@Data
 public class User implements UserDetails,Serializable {
     private static final Logger log = LoggerFactory.getLogger(User.class);
 
     private static final long serialVersionUID = 1L;
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    // 设置这个属性是否可为空
     @Basic(optional = false)
-    @Column(name = "id")
     private Long id;
+
     @Basic(optional = false)
-    @Column(name = "username")
     private String username;
+
     @Basic(optional = false)
     @Column(name = "password",length = 100)
     private String password;
+
     @Basic(optional = false)
-    @Column(name = "name")
     private String name;
-    @Column(name = "email")
+
     private String email;
-    @Column(name = "phone")
+
     private String phone;
+
     @ManyToMany(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
     @JoinTable(name = "user_authority", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "authority_id", referencedColumnName = "id"))
@@ -75,12 +71,12 @@ public class User implements UserDetails,Serializable {
 
     @Override
     public String getPassword() {
-        return null;
+        return this.password;
     }
 
     @Override
     public String getUsername() {
-        return null;
+        return this.username;
     }
 
     @Override
@@ -102,6 +98,7 @@ public class User implements UserDetails,Serializable {
     public boolean isEnabled() {
         return true;
     }
+
     public void setEncodePassword(String password) {
         log.info("rawPassword:  "+password);
         PasswordEncoder encoder = new BCryptPasswordEncoder();
