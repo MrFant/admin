@@ -5,5 +5,14 @@ server:
 spring:
   thymeleaf:
     cache: false
+  # JPA
+  jpa:
+    show-sql: true
+  # Data Source
+  datasource:
+    url: jdbc:h2:tcp://localhost:9092/~/admin
+    username: sa
+    password:
+
 
 # 开发环境使用嵌入式h2数据库，无需配置数据源

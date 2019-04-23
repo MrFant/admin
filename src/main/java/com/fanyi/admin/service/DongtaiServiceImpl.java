@@ -23,7 +23,7 @@ public class DongtaiServiceImpl implements DongtaiService {
 
     @Override
     public void removeDongtai(Long id) {
-        dongtaiDao.delete(id);
+        dongtaiDao.deleteById(id);
     }
 
     @Override

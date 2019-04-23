@@ -20,8 +20,8 @@ import java.util.Collection;
  */
 @Entity
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
+//@AllArgsConstructor
+//@NoArgsConstructor
 
 public class Authority implements GrantedAuthority,Serializable {
 
@@ -35,6 +35,10 @@ public class Authority implements GrantedAuthority,Serializable {
     private String name;
     @ManyToMany(mappedBy = "authorities", fetch = FetchType.EAGER)
     private Collection<User> users;
+
+    public Authority(String name) {
+        this.name = name;
+    }
 
     @Override
     public String getAuthority() {

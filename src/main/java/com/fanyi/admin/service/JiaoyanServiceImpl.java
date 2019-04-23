@@ -22,7 +22,7 @@ public class JiaoyanServiceImpl implements JiaoyanService {
 
     @Override
     public void removeJiaoyan(Long id) {
-        jiaoyanDao.delete(id);
+        jiaoyanDao.deleteById(id);
     }
 
     @Override

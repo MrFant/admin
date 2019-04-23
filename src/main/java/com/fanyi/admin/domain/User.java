@@ -5,7 +5,9 @@
  */
 package com.fanyi.admin.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.GrantedAuthority;
@@ -25,8 +27,22 @@ import java.util.List;
  */
 @Entity
 @Data
+//@AllArgsConstructor
+//@NoArgsConstructor
 public class User implements UserDetails,Serializable {
     private static final Logger log = LoggerFactory.getLogger(User.class);
+
+    public User() {
+    }
+
+    public User(String username, String password, String name, String email, String phone,List<Authority> authorities) {
+        this.username = username;
+        this.password = password;
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.authorities=authorities;
+    }
 
     private static final long serialVersionUID = 1L;
 

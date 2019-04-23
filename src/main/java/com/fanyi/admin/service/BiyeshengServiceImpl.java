@@ -23,7 +23,7 @@ public class BiyeshengServiceImpl implements BiyeshengService {
 
     @Override
     public void removeBiyesheng(Long id) {
-        biyeshengDao.delete(id);
+        biyeshengDao.deleteById(id);
     }
 
     @Override

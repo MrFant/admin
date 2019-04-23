@@ -1,5 +1,6 @@
 package com.fanyi.admin.service;
 
+import com.fanyi.admin.domain.Authority;
 import com.fanyi.admin.domain.User;
 import com.fanyi.admin.dao.UserDao;
 import org.slf4j.Logger;
@@ -7,12 +8,15 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -32,7 +36,7 @@ public class UserServiceImpl implements UserService,UserDetailsService {
 
     @Override
     public void removeUser(Long id) {
-        userDao.delete(id);
+        userDao.deleteById(id);
     }
 
 
@@ -70,10 +74,13 @@ public class UserServiceImpl implements UserService,UserDetailsService {
         /*
           这个方法不能返回null
          */
-        User user=userDao.findByUsername(username);
-        if (user==null){
-            throw new UsernameNotFoundException(username);
-        }
+//        User user=userDao.findByUsername(username);
+//        if (user==null){
+//            throw new UsernameNotFoundException(username);
+//        }
+        List<Authority> authorities= new ArrayList<>();
+        authorities.add(new Authority("ROLE_USER"));
+        User user=new User("fanyi","{noop}123456","fant","23112@qq.com","15706568439",authorities);
 
         return user;
 
