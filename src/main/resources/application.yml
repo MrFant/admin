@@ -1,6 +1,12 @@
 spring:
   profiles:
     active:
-      - dev
+      - test
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+    open-in-view: true
 #  mvc:
 #    static-path-pattern: /static/**
+
